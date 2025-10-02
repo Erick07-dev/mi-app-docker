@@ -1,0 +1,14 @@
+{
+  "name": "mi-app-docker",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "repository": "https://github.com/Erick07-dev/mi-app-docker.git",
+  "author": "Erick <michellerik96@gmail.com>",
+  "license": "MIT"
+}
