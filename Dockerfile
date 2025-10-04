@@ -1,19 +1,18 @@
+@"
 FROM node:20-alpine
-
-# Habilitar Corepack para Yarn
-RUN corepack enable && corepack prepare yarn@stable --activate
 
 WORKDIR /usr/src/app
 
-# Copiar archivos de configuración
-COPY package.json yarn.lock .yarnrc.yml ./
+# Copiar SOLO package.json primero
+COPY package.json ./
 
-# Instalar dependencias con Yarn (esto creará node_modules)
+# Instalar dependencias (generará lockfile si no existe)
 RUN yarn install
 
-# Copiar el resto del proyecto
+# Ahora copiar el resto de archivos
 COPY . .
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD [\"node\", \"server.js\"]
+"@ | Out-File -FilePath "Dockerfile" -Encoding UTF8 -Force
